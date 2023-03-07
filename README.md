@@ -6,7 +6,7 @@ Vytvoriť funkčné hodinky, ktoré sa dajú prepojiť s mobilnou aplikáciou
 
 # Rozdelenie úloh:
 
-###### Do 26.3.2023
+###### Rozpracovať do 26.3.2023
 
  **Obal, na smartwach - LilyGO TTGO T-Display 1.14″ ESP32 (treba počítať aj s baterkou).**\
  Pre: Peter
