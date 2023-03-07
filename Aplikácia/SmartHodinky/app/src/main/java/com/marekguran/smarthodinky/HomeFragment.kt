@@ -1,15 +1,17 @@
-package com.marekguran.smarthodinky.ui.notifications
+package com.marekguran.smarthodinky
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.marekguran.smarthodinky.databinding.FragmentSettingsBinding
+import androidx.lifecycle.ViewModelProvider
+import com.marekguran.smarthodinky.databinding.FragmentHomeBinding
 
-class SettingsFragment : Fragment() {
+class HomeFragment : Fragment() {
 
-    private var _binding: FragmentSettingsBinding? = null
+    private var _binding: FragmentHomeBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -20,9 +22,8 @@ class SettingsFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentSettingsBinding.inflate(inflater, container, false)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
         return root
     }
 

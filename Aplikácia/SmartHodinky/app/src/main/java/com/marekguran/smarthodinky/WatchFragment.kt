@@ -1,4 +1,4 @@
-package com.marekguran.smarthodinky.ui.dashboard
+package com.marekguran.smarthodinky
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.marekguran.smarthodinky.ui.home.HomeFragment"
+        android:name="com.marekguran.smarthodinky.HomeFragment"
         android:label="Domov"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_watch"
-        android:name="com.marekguran.smarthodinky.ui.dashboard.WatchFragment"
+        android:name="com.marekguran.smarthodinky.WatchFragment"
         android:label="Hodinky"
         tools:layout="@layout/fragment_watch" />
 
     <fragment
         android:id="@+id/navigation_settings"
-        android:name="com.marekguran.smarthodinky.ui.notifications.SettingsFragment"
+        android:name="com.marekguran.smarthodinky.SettingsFragment"
         android:label="Nastavenia"
         tools:layout="@layout/fragment_settings" />
 </navigation>
