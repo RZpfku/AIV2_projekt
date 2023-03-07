@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/vyber_domov"
+        android:title="Domov" />
+
+    <item
+        android:id="@+id/navigation_watch"
+        android:icon="@drawable/vyber_hodinky"
+        android:title="Hodinky" />
+
+    <item
+        android:id="@+id/navigation_settings"
+        android:icon="@drawable/vyber_nastavenia"
+        android:title="Nastavenia" />
+
+</menu>

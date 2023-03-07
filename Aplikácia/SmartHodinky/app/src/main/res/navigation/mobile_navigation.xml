@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.marekguran.smarthodinky.ui.home.HomeFragment"
+        android:label="Domov"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_watch"
+        android:name="com.marekguran.smarthodinky.ui.dashboard.WatchFragment"
+        android:label="Hodinky"
+        tools:layout="@layout/fragment_watch" />
+
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="com.marekguran.smarthodinky.ui.notifications.SettingsFragment"
+        android:label="Nastavenia"
+        tools:layout="@layout/fragment_settings" />
+</navigation>
