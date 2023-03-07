@@ -1,19 +1,7 @@
-# AIV2_projekt
-projekt na predmet Aplikacie internetu veci
+# Android Aplikácia
 
-# Plán projektu
-Vytvoriť funkčné hodinky, ktoré sa dajú prepojiť s mobilnou aplikáciou
+# Obrázky
+> Momentálne štádium aplikácie
 
-# Rozdelenie úloh:
-
-###### Rozpracovať do 26.3.2023
-
- **Obal, na smartwach - LilyGO TTGO T-Display 1.14″ ESP32 (treba počítať aj s baterkou).**\
- Pre: Peter
-
- **Software na hodinky.**\
- Pre: Rado
-
- **Android aplikácia slúžiacu na komunikáciu s hodinkami.**\
- Pre: Marek
-
+<img src="https://user-images.githubusercontent.com/26904790/223378923-f3c2c24f-a07d-4142-828a-391bbebf85a9.png" width = "500px"> <img src="https://user-images.githubusercontent.com/26904790/223378912-8fa01464-2ada-4164-8e62-84620feffd52.png" width = "500px">
+<img src="https://user-images.githubusercontent.com/26904790/223378918-d4ffb2a9-29c4-46d3-92a7-67036995a091.png" width = "500px">
