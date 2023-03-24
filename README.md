@@ -2,18 +2,18 @@
 projekt na predmet Aplikacie internetu veci
 
 # Plán projektu
-Vytvoriť funkčné hodinky, ktoré sa dajú prepojiť s mobilnou aplikáciou
+Vytvoriť teplomer, ktorý bude merať teplotu, kvalitu vzduchu a vlhkosť. Teplomer bude posielať dáta na Firebase databázu z ktorej si bude brať a zobrazovať dáta mobilná aplikácia.
 
 # Rozdelenie úloh:
 
 ###### Rozpracovať do 26.3.2023
 
- **Obal, na smartwach - LilyGO TTGO T-Display 1.14″ ESP32 (treba počítať aj s baterkou).**\
+ **Obal, na teplomer - LilyGO TTGO T-Display 1.14″ ESP32 (treba počítať aj s baterkou).**\
  Pre: Peter
 
- **Software na hodinky.**\
+ **Software na teplomer.**\
  Pre: Rado
 
- **Android aplikácia slúžiacu na komunikáciu s hodinkami.**\
+ **Android aplikácia.**\
  Pre: Marek
 
