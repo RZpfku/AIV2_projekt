@@ -42,6 +42,18 @@ class HomeFragment : Fragment() {
     private lateinit var wifi_off_vlhkost: ImageView
     private lateinit var wifi_off_vzduch: ImageView
 
+    private var isAttached: Boolean = false
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        isAttached = true
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        isAttached = false
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -59,7 +71,14 @@ class HomeFragment : Fragment() {
         wifi_off_vlhkost = binding?.wifiOffVlhkost!!
         // Vyvolané lebo sú to lateint, ktoré sa nevytvoria kým nebudú zavolané a ak by to nebolo, tak by checkInternetConnection() crashovalo aplikáciu
 
-        checkInternetConnection()
+
+        // Check if the fragment is attached to the activity
+        if (isAdded) {
+            // Move the code that requires the context to a later point in the fragment lifecycle
+            view?.post {
+                checkInternetConnection()
+            }
+        }
 
         // Schedule the internet connectivity check to run every 15 seconds
         runnable = object : Runnable {
