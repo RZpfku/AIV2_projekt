@@ -16,10 +16,4 @@
         android:name="com.marekguran.esp32teplomer.AboutFragment"
         android:label="O projekte"
         tools:layout="@layout/fragment_about" />
-
-    <fragment
-        android:id="@+id/navigation_settings"
-        android:name="com.marekguran.esp32teplomer.SettingsFragment"
-        android:label="Nastavenia"
-        tools:layout="@layout/fragment_settings" />
 </navigation>

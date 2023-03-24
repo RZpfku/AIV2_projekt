@@ -20,4 +20,6 @@
     <color name="vlhkost_optimalna">#3DDC84</color>
     <color name="vlhkost_mala">#3DB7DC</color>
     <color name="vlhkost_velka">#F44336</color>
+
+    <color name="wifi_off">#FFFFFF</color>
 </resources>

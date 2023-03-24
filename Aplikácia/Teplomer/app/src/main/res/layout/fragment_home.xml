@@ -32,11 +32,20 @@
 
             <TextView
                 android:id="@+id/teplotaValue"
+                android:visibility="visible"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text=""
+                android:text="Null"
                 android:textSize="32sp" />
+
+            <ImageView
+                android:id="@+id/wifi_off_teplota"
+                android:visibility="gone"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:src="@drawable/wifi_off"/>
         </FrameLayout>
 
         <TextView
@@ -64,12 +73,21 @@
 
             <TextView
                 android:id="@+id/vlhkostValue"
+                android:visibility="visible"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text=""
+                android:text="Null"
                 android:textAlignment="center"
                 android:textSize="32sp" />
+
+            <ImageView
+                android:id="@+id/wifi_off_vlhkost"
+                android:visibility="gone"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:src="@drawable/wifi_off"/>
 
         </FrameLayout>
 
@@ -98,12 +116,21 @@
 
             <TextView
                 android:id="@+id/vzduchValue"
+                android:visibility="visible"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text=""
+                android:text="Null"
                 android:textAlignment="center"
                 android:textSize="32sp" />
+
+            <ImageView
+                android:id="@+id/wifi_off_vzduch"
+                android:visibility="gone"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:src="@drawable/wifi_off"/>
 
         </FrameLayout>
 

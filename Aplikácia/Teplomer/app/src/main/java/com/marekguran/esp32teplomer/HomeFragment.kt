@@ -7,6 +7,8 @@ import android.net.Network
 import android.net.NetworkCapabilities
 import android.net.NetworkRequest
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.text.Spanned
 import android.util.Log
 import android.view.LayoutInflater
@@ -30,6 +32,16 @@ class HomeFragment : Fragment() {
     private var binding: FragmentHomeBinding? = null
     private var database: FirebaseDatabase? = null
 
+    private val handler = Handler(Looper.getMainLooper())
+    private lateinit var runnable: Runnable
+
+    private lateinit var teplotaValue: TextView
+    private lateinit var vzduchValue: TextView
+    private lateinit var vlhkostValue: TextView
+    private lateinit var wifi_off_teplota: ImageView
+    private lateinit var wifi_off_vlhkost: ImageView
+    private lateinit var wifi_off_vzduch: ImageView
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -38,7 +50,28 @@ class HomeFragment : Fragment() {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         database = FirebaseDatabase.getInstance()
 
-        val connectivityManager = requireContext().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+
+        teplotaValue = binding?.teplotaValue!!
+        vzduchValue = binding?.vzduchValue!!
+        vlhkostValue = binding?.vlhkostValue!!
+        wifi_off_teplota = binding?.wifiOffTeplota!!
+        wifi_off_vzduch = binding?.wifiOffVzduch!!
+        wifi_off_vlhkost = binding?.wifiOffVlhkost!!
+        // Vyvolané lebo sú to lateint, ktoré sa nevytvoria kým nebudú zavolané a ak by to nebolo, tak by checkInternetConnection() crashovalo aplikáciu
+
+        checkInternetConnection()
+
+        // Schedule the internet connectivity check to run every 15 seconds
+        runnable = object : Runnable {
+            override fun run() {
+                checkInternetConnection()
+                handler.postDelayed(this, 15000)
+            }
+        }
+        handler.post(runnable)
+
+        val connectivityManager =
+            requireContext().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val networkCallback = object : ConnectivityManager.NetworkCallback() {
             override fun onAvailable(network: Network) {
                 try {
@@ -52,31 +85,64 @@ class HomeFragment : Fragment() {
                                 binding?.teplotaValue?.text = teplota
 
                                 // Extract the numerical value from the temperature string
-                                val teplotaValue = teplota.substringBefore("℃").toFloatOrNull() ?: 0f
+                                val teplotaValue =
+                                    teplota.substringBefore("℃").toFloatOrNull() ?: 0f
 
                                 if (teplotaValue < 14f) {
                                     // Set the progress ring color to "zima"
                                     val colorResId = R.color.zima
-                                    ContextCompat.getDrawable(requireContext(), R.drawable.progress_ring)?.setTint(ContextCompat.getColor(requireContext(), colorResId))
-                                    binding?.temperatureDial?.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.progress_ring))
+                                    ContextCompat.getDrawable(
+                                        requireContext(),
+                                        R.drawable.progress_ring
+                                    )?.setTint(ContextCompat.getColor(requireContext(), colorResId))
+                                    binding?.temperatureDial?.setImageDrawable(
+                                        ContextCompat.getDrawable(
+                                            requireContext(),
+                                            R.drawable.progress_ring
+                                        )
+                                    )
                                 }
                                 if (teplotaValue >= 14f) {
                                     // Set the progress ring color to "chladno"
                                     val colorResId = R.color.chladno
-                                    ContextCompat.getDrawable(requireContext(), R.drawable.progress_ring)?.setTint(ContextCompat.getColor(requireContext(), colorResId))
-                                    binding?.temperatureDial?.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.progress_ring))
+                                    ContextCompat.getDrawable(
+                                        requireContext(),
+                                        R.drawable.progress_ring
+                                    )?.setTint(ContextCompat.getColor(requireContext(), colorResId))
+                                    binding?.temperatureDial?.setImageDrawable(
+                                        ContextCompat.getDrawable(
+                                            requireContext(),
+                                            R.drawable.progress_ring
+                                        )
+                                    )
                                 }
                                 if (teplotaValue >= 21f) {
                                     // Set the progress ring color to "normalna"
                                     val colorResId = R.color.normalna
-                                    ContextCompat.getDrawable(requireContext(), R.drawable.progress_ring)?.setTint(ContextCompat.getColor(requireContext(), colorResId))
-                                    binding?.temperatureDial?.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.progress_ring))
+                                    ContextCompat.getDrawable(
+                                        requireContext(),
+                                        R.drawable.progress_ring
+                                    )?.setTint(ContextCompat.getColor(requireContext(), colorResId))
+                                    binding?.temperatureDial?.setImageDrawable(
+                                        ContextCompat.getDrawable(
+                                            requireContext(),
+                                            R.drawable.progress_ring
+                                        )
+                                    )
                                 }
                                 if (teplotaValue >= 27f) {
                                     // Set the progress ring color to "teplo"
                                     val colorResId = R.color.teplo
-                                    ContextCompat.getDrawable(requireContext(), R.drawable.progress_ring)?.setTint(ContextCompat.getColor(requireContext(), colorResId))
-                                    binding?.temperatureDial?.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.progress_ring))
+                                    ContextCompat.getDrawable(
+                                        requireContext(),
+                                        R.drawable.progress_ring
+                                    )?.setTint(ContextCompat.getColor(requireContext(), colorResId))
+                                    binding?.temperatureDial?.setImageDrawable(
+                                        ContextCompat.getDrawable(
+                                            requireContext(),
+                                            R.drawable.progress_ring
+                                        )
+                                    )
                                 }
                             }
 
@@ -94,22 +160,47 @@ class HomeFragment : Fragment() {
 
 
                                 // Extract the numerical value from the temperature string
-                                val vlhkostValue = vlhkost.substringBefore("%").toFloatOrNull() ?: 0f
+                                val vlhkostValue =
+                                    vlhkost.substringBefore("%").toFloatOrNull() ?: 0f
 
                                 if (vlhkostValue < 30f) {
                                     val colorResId = R.color.vlhkost_mala
-                                    ContextCompat.getDrawable(requireContext(), R.drawable.progress_ring)?.setTint(ContextCompat.getColor(requireContext(), colorResId))
-                                    binding?.humidityDial?.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.progress_ring))
+                                    ContextCompat.getDrawable(
+                                        requireContext(),
+                                        R.drawable.progress_ring
+                                    )?.setTint(ContextCompat.getColor(requireContext(), colorResId))
+                                    binding?.humidityDial?.setImageDrawable(
+                                        ContextCompat.getDrawable(
+                                            requireContext(),
+                                            R.drawable.progress_ring
+                                        )
+                                    )
                                 }
                                 if (vlhkostValue >= 30f) {
                                     val colorResId = R.color.vlhkost_optimalna
-                                    ContextCompat.getDrawable(requireContext(), R.drawable.progress_ring)?.setTint(ContextCompat.getColor(requireContext(), colorResId))
-                                    binding?.humidityDial?.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.progress_ring))
+                                    ContextCompat.getDrawable(
+                                        requireContext(),
+                                        R.drawable.progress_ring
+                                    )?.setTint(ContextCompat.getColor(requireContext(), colorResId))
+                                    binding?.humidityDial?.setImageDrawable(
+                                        ContextCompat.getDrawable(
+                                            requireContext(),
+                                            R.drawable.progress_ring
+                                        )
+                                    )
                                 }
                                 if (vlhkostValue >= 60f) {
                                     val colorResId = R.color.vlhkost_velka
-                                    ContextCompat.getDrawable(requireContext(), R.drawable.progress_ring)?.setTint(ContextCompat.getColor(requireContext(), colorResId))
-                                    binding?.humidityDial?.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.progress_ring))
+                                    ContextCompat.getDrawable(
+                                        requireContext(),
+                                        R.drawable.progress_ring
+                                    )?.setTint(ContextCompat.getColor(requireContext(), colorResId))
+                                    binding?.humidityDial?.setImageDrawable(
+                                        ContextCompat.getDrawable(
+                                            requireContext(),
+                                            R.drawable.progress_ring
+                                        )
+                                    )
                                 }
                             }
 
@@ -142,13 +233,22 @@ class HomeFragment : Fragment() {
                                         airQuality = "Zlá"
                                     }
                                     else -> {
-                                        colorResId = R.color.purple_200 // set default color if value is not recognized
+                                        colorResId =
+                                            R.color.purple_200 // set default color if value is not recognized
                                         airQuality = ""
                                     }
                                 }
 
-                                ContextCompat.getDrawable(requireContext(), R.drawable.progress_ring)?.setTint(ContextCompat.getColor(requireContext(), colorResId))
-                                binding?.airDial?.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.progress_ring))
+                                ContextCompat.getDrawable(
+                                    requireContext(),
+                                    R.drawable.progress_ring
+                                )?.setTint(ContextCompat.getColor(requireContext(), colorResId))
+                                binding?.airDial?.setImageDrawable(
+                                    ContextCompat.getDrawable(
+                                        requireContext(),
+                                        R.drawable.progress_ring
+                                    )
+                                )
                                 binding?.vzduchValue?.text = airQuality
                             }
 
@@ -182,5 +282,28 @@ class HomeFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         database = null
+    }
+
+    private fun checkInternetConnection() {
+        val connectivityManager =
+            requireContext().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val networkInfo = connectivityManager.activeNetworkInfo
+        if (networkInfo != null && networkInfo.isConnected) {
+            // If there is an internet connection, show the TextView and hide the ImageView
+            teplotaValue.visibility = View.VISIBLE
+            vlhkostValue.visibility = View.VISIBLE
+            vzduchValue.visibility = View.VISIBLE
+            wifi_off_teplota.visibility = View.GONE
+            wifi_off_vlhkost.visibility = View.GONE
+            wifi_off_vzduch.visibility = View.GONE
+        } else {
+            // If there is no internet connection, hide the TextView and show the ImageView
+            teplotaValue.visibility = View.GONE
+            vlhkostValue.visibility = View.GONE
+            vzduchValue.visibility = View.GONE
+            wifi_off_teplota.visibility = View.VISIBLE
+            wifi_off_vlhkost.visibility = View.VISIBLE
+            wifi_off_vzduch.visibility = View.VISIBLE
+        }
     }
 }

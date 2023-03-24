@@ -11,9 +11,4 @@
         android:icon="@drawable/vyber_o_projekte"
         android:title="O projekte" />
 
-    <item
-        android:id="@+id/navigation_settings"
-        android:icon="@drawable/vyber_nastavenia"
-        android:title="Nastavenia" />
-
 </menu>
