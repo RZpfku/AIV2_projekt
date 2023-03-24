@@ -1,4 +1,4 @@
-package com.marekguran.smarthodinky
+package com.marekguran.esp32teplomer
 
 import org.junit.Test
 

@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">Smart Hodinky</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="app_name">Teplomer</string>
+    <string name="o_projekte">Aplikácia slúži na monitorovanie údajov z meracieho zariadenia pripojeného k platforme IoT (Internet vecí). Údaje zariadenia sú nahrávané do databázy Firebase a zobrazujú sa v tejto aplikácii. Táto aplikácia je vhodná pre použitie v domácnosti, kancelárii alebo kdekoľvek, kde sa potrebujete dozvedieť aktuálne informácie o svojom meracom zariadení.</string>
+    <string name="o_projekte_ludia">Marek Guráň - Aplikácia\nRadovan Žiak - Software pre ESP32\nPeter Spišiak - Krabička</string>
 </resources>

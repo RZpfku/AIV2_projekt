@@ -1,13 +1,13 @@
-package com.marekguran.smarthodinky
+package com.marekguran.esp32teplomer
 
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.marekguran.smarthodinky.databinding.ActivityMainBinding
+import com.marekguran.esp32teplomer.R
+import com.marekguran.esp32teplomer.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,6 +18,8 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val databaseData = DatabaseData(this)
+        databaseData.writableDatabase // Initialize the database and table
 
         val navView: BottomNavigationView = binding.navView
 
@@ -25,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(setOf(
-                R.id.navigation_home, R.id.navigation_watch, R.id.navigation_settings))
+                R.id.navigation_home, R.id.navigation_about, R.id.navigation_settings))
         // setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }

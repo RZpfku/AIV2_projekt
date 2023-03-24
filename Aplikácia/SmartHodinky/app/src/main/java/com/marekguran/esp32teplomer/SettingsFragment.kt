@@ -1,15 +1,15 @@
-package com.marekguran.smarthodinky
+package com.marekguran.esp32teplomer
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.marekguran.smarthodinky.databinding.FragmentWatchBinding
+import com.marekguran.esp32teplomer.databinding.FragmentSettingsBinding
 
-class WatchFragment : Fragment() {
+class SettingsFragment : Fragment() {
 
-    private var _binding: FragmentWatchBinding? = null
+    private var _binding: FragmentSettingsBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -20,8 +20,9 @@ class WatchFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentWatchBinding.inflate(inflater, container, false)
+        _binding = FragmentSettingsBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
         return root
     }
 
