@@ -15,7 +15,8 @@
             android:text="Teplota"
             android:textAlignment="center"
             android:textSize="23sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp"/>
 
         <FrameLayout
             android:layout_width="wrap_content"
@@ -46,7 +47,8 @@
             android:text="Vlhkosť"
             android:textAlignment="center"
             android:textSize="23sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp"/>
 
         <FrameLayout
             android:layout_width="wrap_content"
@@ -79,7 +81,8 @@
             android:text="Kvalita vzduchu"
             android:textAlignment="center"
             android:textSize="23sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp"/>
 
         <FrameLayout
             android:layout_width="wrap_content"
