@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "767910434757",
+    "firebase_url": "https://teplomer-esp32-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "teplomer-esp32",
     "storage_bucket": "teplomer-esp32.appspot.com"
   },

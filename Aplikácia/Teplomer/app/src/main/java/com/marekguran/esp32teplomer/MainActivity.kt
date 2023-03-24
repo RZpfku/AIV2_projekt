@@ -18,8 +18,6 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val databaseData = DatabaseData(this)
-        databaseData.writableDatabase // Initialize the database and table
 
         val navView: BottomNavigationView = binding.navView
 

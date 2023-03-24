@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "767910434757",
+    "project_id": "teplomer-esp32",
+    "storage_bucket": "https://teplomer-esp32-default-rtdb.europe-west1.firebasedatabase.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:767910434757:android:61dbaeaef9579ab1771dac",
+        "android_client_info": {
+          "package_name": "com.marekguran.esp32teplomer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "767910434757-u5p42bmsb9jui0eju89un7936sseb0mo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCx3EbJC30SFX5MvSCzryvcOyyGw2uA1WY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "767910434757-u5p42bmsb9jui0eju89un7936sseb0mo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
