@@ -3,11 +3,11 @@ projekt na predmet Aplikacie internetu veci
 
 Na projekte pracovali:
 
->[Radovan Žiak](https://github.com/RZpfku)(Vedúci projektu, kód pre ESP32)
+>[Radovan Žiak](https://github.com/RZpfku) (Vedúci projektu, kód pre ESP32)
 
->Marek Guráň (Android aplikácia s Firebase databázou) [GitHub](https://github.com/marek-guran)
+>[Marek Guráň](https://github.com/marek-guran) (Android aplikácia s Firebase databázou)
 
->Peter Spišiak (Krabička a tester aplikácie) [GitHub](https://github.com/PeterSpisiak)
+>[Peter Spišiak](https://github.com/PeterSpisiak) (Krabička a tester aplikácie)
 
 # Plán projektu
 Vytvoriť teplomer, ktorý bude merať teplotu, kvalitu vzduchu a vlhkosť. Teplomer bude posielať dáta na Firebase databázu z ktorej si bude brať a zobrazovať dáta mobilná aplikácia.
