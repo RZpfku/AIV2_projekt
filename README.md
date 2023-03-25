@@ -60,7 +60,7 @@ void loop() {
 
   String humidity = "60%";
 
-  String air = "good";
+  String air = "Dobrá";
 
   Firebase.setString(firebaseData, "/data/teplota", temperature);
 
