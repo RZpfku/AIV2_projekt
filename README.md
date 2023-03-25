@@ -3,11 +3,11 @@ projekt na predmet Aplikacie internetu veci
 
 Na projekte pracovali:
 
->Radovan Žiak (Vedúci projektu, kód pre ESP32)
+>Radovan Žiak (Vedúci projektu, kód pre ESP32) [GitHub](https://github.com/RZpfku)
 
->Marek Guráň (Android aplikácia s Firebase databázou)
+>Marek Guráň (Android aplikácia s Firebase databázou) [GitHub](https://github.com/marek-guran)
 
->Peter Spišiak (Krabička a tester aplikácie)
+>Peter Spišiak (Krabička a tester aplikácie) [GitHub](https://github.com/PeterSpisiak)
 
 Contributors:
 <a href="https://github.com/RZpfku/AIV2_projekt/graphs/contributors">
