@@ -9,23 +9,18 @@ import android.net.NetworkRequest
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.text.Spanned
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.core.content.ContextCompat
-import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.marekguran.esp32teplomer.databinding.FragmentHomeBinding
-import kotlinx.coroutines.delay
-
-private const val TAG = "HomeFragment"
 
 class HomeFragment : Fragment() {
 
@@ -63,12 +58,15 @@ class HomeFragment : Fragment() {
         database = FirebaseDatabase.getInstance()
 
 
-        teplotaValue = binding?.teplotaValue!!
-        vzduchValue = binding?.vzduchValue!!
-        vlhkostValue = binding?.vlhkostValue!!
-        wifi_off_teplota = binding?.wifiOffTeplota!!
-        wifi_off_vzduch = binding?.wifiOffVzduch!!
-        wifi_off_vlhkost = binding?.wifiOffVlhkost!!
+        binding?.let {
+            teplotaValue = it.teplotaValue
+            vzduchValue = it.vzduchValue
+            vlhkostValue = it.vlhkostValue
+            wifi_off_teplota = it.wifiOffTeplota
+            wifi_off_vzduch = it.wifiOffVzduch
+            wifi_off_vlhkost = it.wifiOffVlhkost
+        }
+
         // Vyvolané lebo sú to lateint, ktoré sa nevytvoria kým nebudú zavolané a ak by to nebolo, tak by checkInternetConnection() crashovalo aplikáciu
 
 
@@ -303,26 +301,30 @@ class HomeFragment : Fragment() {
         database = null
     }
 
+    @Suppress("DEPRECATION")
     private fun checkInternetConnection() {
         val connectivityManager =
-            requireContext().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        val networkInfo = connectivityManager.activeNetworkInfo
-        if (networkInfo != null && networkInfo.isConnected) {
-            // If there is an internet connection, show the TextView and hide the ImageView
-            teplotaValue.visibility = View.VISIBLE
-            vlhkostValue.visibility = View.VISIBLE
-            vzduchValue.visibility = View.VISIBLE
-            wifi_off_teplota.visibility = View.GONE
-            wifi_off_vlhkost.visibility = View.GONE
-            wifi_off_vzduch.visibility = View.GONE
-        } else {
-            // If there is no internet connection, hide the TextView and show the ImageView
-            teplotaValue.visibility = View.GONE
-            vlhkostValue.visibility = View.GONE
-            vzduchValue.visibility = View.GONE
-            wifi_off_teplota.visibility = View.VISIBLE
-            wifi_off_vlhkost.visibility = View.VISIBLE
-            wifi_off_vzduch.visibility = View.VISIBLE
+            activity?.applicationContext?.getSystemService(Context.CONNECTIVITY_SERVICE) as? ConnectivityManager
+        if (connectivityManager != null) {
+            val networkInfo = connectivityManager.activeNetworkInfo
+            if (networkInfo != null && networkInfo.isConnected) {
+                // If there is an internet connection, show the TextView and hide the ImageView
+                teplotaValue.visibility = View.VISIBLE
+                vlhkostValue.visibility = View.VISIBLE
+                vzduchValue.visibility = View.VISIBLE
+                wifi_off_teplota.visibility = View.GONE
+                wifi_off_vlhkost.visibility = View.GONE
+                wifi_off_vzduch.visibility = View.GONE
+            } else {
+                // If there is no internet connection, hide the TextView and show the ImageView
+                teplotaValue.visibility = View.GONE
+                vlhkostValue.visibility = View.GONE
+                vzduchValue.visibility = View.GONE
+                wifi_off_teplota.visibility = View.VISIBLE
+                wifi_off_vlhkost.visibility = View.VISIBLE
+                wifi_off_vzduch.visibility = View.VISIBLE
+            }
         }
     }
+
 }
