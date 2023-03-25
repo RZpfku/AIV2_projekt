@@ -74,7 +74,7 @@ void loop() {
 
   }
 
-  Firebase.setString(firebaseData, "/data/vlhkosť", humidity);
+  Firebase.setString(firebaseData, "/data/vlhkost", humidity);
 
   if (firebaseData.success()) {
 
