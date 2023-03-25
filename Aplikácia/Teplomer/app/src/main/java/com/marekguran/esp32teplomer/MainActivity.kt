@@ -1,17 +1,12 @@
 package com.marekguran.esp32teplomer
 
-import android.graphics.Color
-import android.os.Build
 import android.os.Bundle
-import android.view.View
-import android.view.ViewGroup
 import android.view.WindowManager
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
-import com.marekguran.esp32teplomer.R
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.marekguran.esp32teplomer.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

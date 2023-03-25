@@ -98,68 +98,90 @@ class HomeFragment : Fragment() {
                         val teplotaRef = database!!.getReference("data").child("teplota")
                         teplotaRef.addValueEventListener(object : ValueEventListener {
                             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                                val teplota = dataSnapshot.value as? String ?: ""
-                                binding?.teplotaValue?.text = teplota
+                                if (isAdded()) {
+                                    val teplota = dataSnapshot.value as? String ?: ""
+                                    binding?.teplotaValue?.text = teplota
 
-                                // Extract the numerical value from the temperature string
-                                val teplotaValue =
-                                    teplota.substringBefore("℃").toFloatOrNull() ?: 0f
+                                    // Extract the numerical value from the temperature string
+                                    val teplotaValue =
+                                        teplota.substringBefore("℃").toFloatOrNull() ?: 0f
 
-                                if (teplotaValue < 14f) {
-                                    // Set the progress ring color to "zima"
-                                    val colorResId = R.color.zima
-                                    ContextCompat.getDrawable(
-                                        requireContext(),
-                                        R.drawable.progress_ring
-                                    )?.setTint(ContextCompat.getColor(requireContext(), colorResId))
-                                    binding?.temperatureDial?.setImageDrawable(
+                                    if (teplotaValue < 14f) {
+                                        // Set the progress ring color to "zima"
+                                        val colorResId = R.color.zima
                                         ContextCompat.getDrawable(
                                             requireContext(),
                                             R.drawable.progress_ring
+                                        )?.setTint(
+                                            ContextCompat.getColor(
+                                                requireContext(),
+                                                colorResId
+                                            )
                                         )
-                                    )
-                                }
-                                if (teplotaValue >= 14f) {
-                                    // Set the progress ring color to "chladno"
-                                    val colorResId = R.color.chladno
-                                    ContextCompat.getDrawable(
-                                        requireContext(),
-                                        R.drawable.progress_ring
-                                    )?.setTint(ContextCompat.getColor(requireContext(), colorResId))
-                                    binding?.temperatureDial?.setImageDrawable(
+                                        binding?.temperatureDial?.setImageDrawable(
+                                            ContextCompat.getDrawable(
+                                                requireContext(),
+                                                R.drawable.progress_ring
+                                            )
+                                        )
+                                    }
+                                    if (teplotaValue >= 14f) {
+                                        // Set the progress ring color to "chladno"
+                                        val colorResId = R.color.chladno
                                         ContextCompat.getDrawable(
                                             requireContext(),
                                             R.drawable.progress_ring
+                                        )?.setTint(
+                                            ContextCompat.getColor(
+                                                requireContext(),
+                                                colorResId
+                                            )
                                         )
-                                    )
-                                }
-                                if (teplotaValue >= 21f) {
-                                    // Set the progress ring color to "normalna"
-                                    val colorResId = R.color.normalna
-                                    ContextCompat.getDrawable(
-                                        requireContext(),
-                                        R.drawable.progress_ring
-                                    )?.setTint(ContextCompat.getColor(requireContext(), colorResId))
-                                    binding?.temperatureDial?.setImageDrawable(
+                                        binding?.temperatureDial?.setImageDrawable(
+                                            ContextCompat.getDrawable(
+                                                requireContext(),
+                                                R.drawable.progress_ring
+                                            )
+                                        )
+                                    }
+                                    if (teplotaValue >= 21f) {
+                                        // Set the progress ring color to "normalna"
+                                        val colorResId = R.color.normalna
                                         ContextCompat.getDrawable(
                                             requireContext(),
                                             R.drawable.progress_ring
+                                        )?.setTint(
+                                            ContextCompat.getColor(
+                                                requireContext(),
+                                                colorResId
+                                            )
                                         )
-                                    )
-                                }
-                                if (teplotaValue >= 27f) {
-                                    // Set the progress ring color to "teplo"
-                                    val colorResId = R.color.teplo
-                                    ContextCompat.getDrawable(
-                                        requireContext(),
-                                        R.drawable.progress_ring
-                                    )?.setTint(ContextCompat.getColor(requireContext(), colorResId))
-                                    binding?.temperatureDial?.setImageDrawable(
+                                        binding?.temperatureDial?.setImageDrawable(
+                                            ContextCompat.getDrawable(
+                                                requireContext(),
+                                                R.drawable.progress_ring
+                                            )
+                                        )
+                                    }
+                                    if (teplotaValue >= 27f) {
+                                        // Set the progress ring color to "teplo"
+                                        val colorResId = R.color.teplo
                                         ContextCompat.getDrawable(
                                             requireContext(),
                                             R.drawable.progress_ring
+                                        )?.setTint(
+                                            ContextCompat.getColor(
+                                                requireContext(),
+                                                colorResId
+                                            )
                                         )
-                                    )
+                                        binding?.temperatureDial?.setImageDrawable(
+                                            ContextCompat.getDrawable(
+                                                requireContext(),
+                                                R.drawable.progress_ring
+                                            )
+                                        )
+                                    }
                                 }
                             }
 
