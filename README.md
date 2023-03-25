@@ -9,13 +9,6 @@ Na projekte pracovali:
 
 >Peter Spišiak (Krabička a tester aplikácie) [GitHub](https://github.com/PeterSpisiak)
 
-Contributors:
-<a href="https://github.com/RZpfku/AIV2_projekt/graphs/contributors">
-
-  <img src="https://contrib.rocks/image?repo=RZpfku/AIV2_projekt" />
-
-</a>
-
 # Plán projektu
 Vytvoriť teplomer, ktorý bude merať teplotu, kvalitu vzduchu a vlhkosť. Teplomer bude posielať dáta na Firebase databázu z ktorej si bude brať a zobrazovať dáta mobilná aplikácia.
 
