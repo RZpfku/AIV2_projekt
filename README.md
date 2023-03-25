@@ -3,7 +3,7 @@ projekt na predmet Aplikacie internetu veci
 
 Na projekte pracovali:
 
->Radovan Žiak (Vedúci projektu, kód pre ESP32) [GitHub](https://github.com/RZpfku)
+>[Radovan Žiak](https://github.com/RZpfku)(Vedúci projektu, kód pre ESP32)
 
 >Marek Guráň (Android aplikácia s Firebase databázou) [GitHub](https://github.com/marek-guran)
 
