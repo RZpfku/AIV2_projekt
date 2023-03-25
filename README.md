@@ -1,6 +1,21 @@
 # AIV2_projekt
 projekt na predmet Aplikacie internetu veci
 
+Na projekte pracovali:
+
+>Radovan Žiak (Vedúci projektu, kód pre ESP32)
+
+>Marek Guráň (Android aplikácia s Firebase databázou)
+
+>Peter Spišiak (Krabička a tester aplikácie)
+
+Contributors:
+<a href="https://github.com/RZpfku/AIV2_projekt/graphs/contributors">
+
+  <img src="https://contrib.rocks/image?repo=RZpfku/AIV2_projekt" />
+
+</a>
+
 # Plán projektu
 Vytvoriť teplomer, ktorý bude merať teplotu, kvalitu vzduchu a vlhkosť. Teplomer bude posielať dáta na Firebase databázu z ktorej si bude brať a zobrazovať dáta mobilná aplikácia.
 
