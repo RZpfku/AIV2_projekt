@@ -1,6 +1,6 @@
 # AIV2_projekt
 
-| Na projekte precovali:              | Úlohy:                        |
+| Na projekte pracovali:              | Úlohy:                        |
 | -----------------| -------------------------------------|
 | [Radovan Žiak](https://github.com/RZpfku) | Vedúci projektu, kód pre ESP32 |
 | [Marek Guráň](https://github.com/marek-guran) | Android aplikácia s Firebase databázou + firebase kód pre ESP32 |
