@@ -1,5 +1,9 @@
 # Android Aplikácia
 
+Aplikácia slúži na monitorovanie údajov z meracieho zariadenia pripojeného k platforme IoT (Internet vecí). Údaje zariadenia sú nahrávané do databázy Firebase a zobrazujú sa v tejto aplikácii. Táto aplikácie je vhodná pre použitie v domácnosti, kancelárii alebo kdekoľvek, kde sa potrebujete dozvedieť aktuálne informácie o svojom meracom zariadení.
+
+Aplikácia je písaná v programovacom jazyku Kotlin.
+
 # Obrázky
 > Momentálne štádium aplikácie (vzhľad aplikácie sa môže líšiť v závislosti od toho, či dané zariadenie podporuje Material You)
 
