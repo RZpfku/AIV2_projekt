@@ -5,7 +5,7 @@ projekt na predmet Aplikacie internetu veci
 
 • [Radovan Žiak](https://github.com/RZpfku) (Vedúci projektu, kód pre ESP32)
 
-• [Marek Guráň](https://github.com/marek-guran) (Android aplikácia s Firebase databázou)
+• [Marek Guráň](https://github.com/marek-guran) (Android aplikácia s Firebase databázou + firebase kód pre ESP32)
 
 • [Peter Spišiak](https://github.com/PeterSpisiak) (Krabička a tester aplikácie)
 
@@ -24,91 +24,3 @@ Vytvoriť teplomer, ktorý bude merať teplotu, kvalitu vzduchu a vlhkosť. Tepl
 
  **Android aplikácia.**\
  Pre: Marek
-
-# Ukážkový kód pre Radovana (Firebase)
-
-```
-#include <FirebaseESP32.h>
-
-#define FIREBASE_HOST "teplomer-esp32-default-rtdb.europe-west1.firebasedatabase.app"
-
-#define FIREBASE_AUTH ""
-
-FirebaseData firebaseData;
-
-const char* ssid = "your_ssid";
-
-const char* password = "your_password";
-
-void setup() {
-
-  Serial.begin(9600);
-
-  WiFi.begin(ssid, password);
-
-  while (WiFi.status() != WL_CONNECTED) {
-
-    delay(1000);
-
-    Serial.println("Connecting to WiFi...");
-
-  }
-
-  Firebase.begin(FIREBASE_HOST);
-
-  Firebase.reconnectWiFi(true);
-
-  Serial.println("Connected to Firebase");
-
-}
-
-void loop() {
-
-  String temperature = "30°C";
-
-  String humidity = "60%";
-
-  String air = "Dobrá";
-
-  Firebase.setString(firebaseData, "/data/teplota", temperature);
-
-  if (firebaseData.success()) {
-
-    Serial.println("Temperature uploaded to Firebase");
-
-  } else {
-
-    Serial.println("Temperature upload failed");
-
-  }
-
-  Firebase.setString(firebaseData, "/data/vlhkost", humidity);
-
-  if (firebaseData.success()) {
-
-    Serial.println("Humidity uploaded to Firebase");
-
-  } else {
-
-    Serial.println("Humidity upload failed");
-
-  }
-
-  Firebase.setString(firebaseData, "/data/vzduch", air);
-
-  if (firebaseData.success()) {
-
-    Serial.println("Air quality uploaded to Firebase");
-
-  } else {
-
-    Serial.println("Air quality upload failed");
-
-  }
-
-  delay(10000);
-
-}
-
-
-```
