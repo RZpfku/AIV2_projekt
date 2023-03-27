@@ -15,6 +15,7 @@ Vytvoriť teplomer, ktorý bude merať teplotu, kvalitu vzduchu a vlhkosť. Tepl
 
  **Obal, na teplomer - Vývojová doska ESP32 + 0.96″ OLED display.**\
  Treba počítať s tým, že bude trebať dieru pre napájací kábel.\
+ Rozmery: 29.22 mm x 98.58 mm x 17.22 mm\
  Pre: Peter
 
  **Dokumentácia.**\
