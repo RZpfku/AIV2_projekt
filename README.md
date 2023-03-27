@@ -2,8 +2,8 @@
 
 | Na projekte pracovali:              | Úlohy:                        |
 | -----------------| -------------------------------------|
-| [Radovan Žiak](https://github.com/RZpfku) | Vedúci projektu, kód pre ESP32 |
-| [Marek Guráň](https://github.com/marek-guran) | Android aplikácia s Firebase databázou + firebase kód pre ESP32 |
+| [Radovan Žiak](https://github.com/RZpfku) | Vedúci projektu, dokumentácia, obhajoba projektu |
+| [Marek Guráň](https://github.com/marek-guran) | Android aplikácia s Firebase databázou + kód pre ESP32 |
 | [Peter Spišiak](https://github.com/PeterSpisiak) | Krabička a tester aplikácie |
 
 # Plán projektu
@@ -17,13 +17,13 @@ Vytvoriť teplomer, ktorý bude merať teplotu, kvalitu vzduchu a vlhkosť. Tepl
  Treba počítať s tým, že bude trebať dieru pre napájací kábel.\
  Pre: Peter
 
- **Software na teplomer.**\
+ **Dokumentácia.**\
  Pre: Rado
 
- **Android aplikácia.**\
+ **Android aplikácia, Firebase databáza, software pre teplomer.**\
  Pre: Marek
  
  # Hotové úlohy:
 
- **Android aplikácia, firebase databáza, firebase kód pre ESP32.**
+ **Android aplikácia, firebase databáza, kód pre ESP32.**
  >Marek (90% hotové)
