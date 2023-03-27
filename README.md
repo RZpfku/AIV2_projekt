@@ -25,4 +25,4 @@ Vytvoriť teplomer, ktorý bude merať teplotu, kvalitu vzduchu a vlhkosť. Tepl
  # Hotové úlohy:
 
  **Android aplikácia, firebase databáza, firebase kód pre ESP32.**
- >Marek (100% hotové)
+ >Marek (90% hotové)
