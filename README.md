@@ -13,7 +13,7 @@ Vytvoriť teplomer, ktorý bude merať teplotu, kvalitu vzduchu a vlhkosť. Tepl
 
 ###### Rozpracovať do 26.3.2023
 
- **Obal, na teplomer - ESP32 Wemos Lolin 32 s OLED displejom.**\
+ **Obal, na teplomer - Vývojová doska ESP32 + 0.96″ OLED display.**\
  Treba počítať s tým, že bude trebať dieru pre napájací kábel.\
  Pre: Peter
 
