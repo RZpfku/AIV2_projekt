@@ -2,7 +2,7 @@
 
 | Na projekte pracovali:              | Úlohy:                        |
 | -----------------| -------------------------------------|
-| [Radovan Žiak](https://github.com/RZpfku) | Vedúci projektu, dokumentácia, obhajoba projektu |
+| [Radovan Žiak](https://github.com/RZpfku) | Vedúci projektu, dokumentácia, obhajoba projektu a tester aplikácie |
 | [Marek Guráň](https://github.com/marek-guran) | Android aplikácia s Firebase databázou + kód pre ESP32 |
 | [Peter Spišiak](https://github.com/PeterSpisiak) | Krabička a tester aplikácie |
 
