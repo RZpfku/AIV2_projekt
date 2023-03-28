@@ -6,11 +6,11 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 
-#define WIFI_SSID "Desktop-MK"
-#define WIFI_PASSWORD "Loltrolllol"
-#define FIREBASE_HOST "teplomer-esp32-default-rtdb.europe-west1.firebasedatabase.app"
-#define FIREBASE_AUTH "1HCE4eC2ZAfJD8vsrAy99LRPc3e9BFBo5VKwy0xD"
-#define OPENWEATHER_API_KEY "c3238a87b39de7273824b1adcfa6d7f2"
+#define WIFI_SSID ""
+#define WIFI_PASSWORD ""
+#define FIREBASE_HOST ""
+#define FIREBASE_AUTH ""
+#define OPENWEATHER_API_KEY ""
 
 #define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 64
