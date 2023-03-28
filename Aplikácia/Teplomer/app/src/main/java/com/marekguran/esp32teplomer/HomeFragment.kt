@@ -31,11 +31,10 @@ class HomeFragment : Fragment() {
     private lateinit var runnable: Runnable
 
     private lateinit var teplotaValue: TextView
-    private lateinit var vzduchValue: TextView
     private lateinit var vlhkostValue: TextView
+    private lateinit var mesto: TextView
     private lateinit var wifi_off_teplota: ImageView
     private lateinit var wifi_off_vlhkost: ImageView
-    private lateinit var wifi_off_vzduch: ImageView
 
     private var isAttached: Boolean = false
 
@@ -60,10 +59,8 @@ class HomeFragment : Fragment() {
 
         binding?.let {
             teplotaValue = it.teplotaValue
-            vzduchValue = it.vzduchValue
             vlhkostValue = it.vlhkostValue
             wifi_off_teplota = it.wifiOffTeplota
-            wifi_off_vzduch = it.wifiOffVzduch
             wifi_off_vlhkost = it.wifiOffVlhkost
         }
 
@@ -249,54 +246,46 @@ class HomeFragment : Fragment() {
                             }
                         })
 
-                        val vzduchRef = database!!.getReference("data").child("vzduch")
-                        vzduchRef.addValueEventListener(object : ValueEventListener {
+
+                        val mestoRef = database!!.getReference("data").child("mesto")
+                        mestoRef.addValueEventListener(object : ValueEventListener {
                             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                                val vzduch = dataSnapshot.value as? String ?: ""
-                                binding?.vzduchValue?.text = vzduch
-
-                                val colorResId: Int
-                                val airQuality: String
-
-                                when (vzduch) {
-                                    "Dobrá" -> {
-                                        colorResId = R.color.vzduch_dobry
-                                        airQuality = "Dobrá"
-                                    }
-                                    "Stredná" -> {
-                                        colorResId = R.color.vzduch_stredny
-                                        airQuality = "Stredná"
-                                    }
-                                    "Zlá" -> {
-                                        colorResId = R.color.vzduch_zly
-                                        airQuality = "Zlá"
-                                    }
-                                    else -> {
-                                        colorResId =
-                                            R.color.purple_200 // set default color if value is not recognized
-                                        airQuality = ""
-                                    }
-                                }
-
-                                ContextCompat.getDrawable(
-                                    requireContext(),
-                                    R.drawable.progress_ring
-                                )?.setTint(ContextCompat.getColor(requireContext(), colorResId))
-                                binding?.airDial?.setImageDrawable(
-                                    ContextCompat.getDrawable(
-                                        requireContext(),
-                                        R.drawable.progress_ring
-                                    )
-                                )
-                                binding?.vzduchValue?.text = airQuality
+                                val mesto = dataSnapshot.value as? String ?: ""
+                                binding?.mesto?.text = mesto
                             }
-
 
                             override fun onCancelled(error: DatabaseError) {
                                 // Handle any errors that may occur while retrieving the data
                                 // For example, you could log the error message using Log.e()
                             }
                         })
+
+                        val vietorRef = database!!.getReference("data").child("vietor")
+                        vietorRef.addValueEventListener(object : ValueEventListener {
+                            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                                val vietor = dataSnapshot.value as? String ?: ""
+                                binding?.vietor?.text = "Vietor: " + vietor
+                            }
+
+                            override fun onCancelled(error: DatabaseError) {
+                                // Handle any errors that may occur while retrieving the data
+                                // For example, you could log the error message using Log.e()
+                            }
+                        })
+
+                        val tlakRef = database!!.getReference("data").child("tlak")
+                        tlakRef.addValueEventListener(object : ValueEventListener {
+                            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                                val tlak = dataSnapshot.value as? String ?: ""
+                                binding?.tlak?.text = "Tlak: " + tlak
+                            }
+
+                            override fun onCancelled(error: DatabaseError) {
+                                // Handle any errors that may occur while retrieving the data
+                                // For example, you could log the error message using Log.e()
+                            }
+                        })
+
                     }
                 } catch (e: Exception) {
                     Log.e(TAG, "Error occurred while retrieving data from Firebase: ${e.message}")
@@ -333,18 +322,14 @@ class HomeFragment : Fragment() {
                 // If there is an internet connection, show the TextView and hide the ImageView
                 teplotaValue.visibility = View.VISIBLE
                 vlhkostValue.visibility = View.VISIBLE
-                vzduchValue.visibility = View.VISIBLE
                 wifi_off_teplota.visibility = View.GONE
                 wifi_off_vlhkost.visibility = View.GONE
-                wifi_off_vzduch.visibility = View.GONE
             } else {
                 // If there is no internet connection, hide the TextView and show the ImageView
                 teplotaValue.visibility = View.GONE
                 vlhkostValue.visibility = View.GONE
-                vzduchValue.visibility = View.GONE
                 wifi_off_teplota.visibility = View.VISIBLE
                 wifi_off_vlhkost.visibility = View.VISIBLE
-                wifi_off_vzduch.visibility = View.VISIBLE
             }
         }
     }
