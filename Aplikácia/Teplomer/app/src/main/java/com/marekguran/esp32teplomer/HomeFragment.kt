@@ -32,7 +32,6 @@ class HomeFragment : Fragment() {
 
     private lateinit var teplotaValue: TextView
     private lateinit var vlhkostValue: TextView
-    private lateinit var mesto: TextView
     private lateinit var wifi_off_teplota: ImageView
     private lateinit var wifi_off_vlhkost: ImageView
 
@@ -83,6 +82,23 @@ class HomeFragment : Fragment() {
             }
         }
         handler.post(runnable)
+
+        val vypZapButton = binding?.zapVyp
+        vypZapButton?.setOnClickListener {
+            if (isConnectedToInternet()) {
+                val dataRef = database!!.getReference("data/displej")
+                val value = if (it.isSelected) "0" else "1"
+                it.isSelected = !it.isSelected
+                dataRef.setValue(value)
+                if (value == "0") {
+                    Toast.makeText(context, "Vypnuté", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(context, "Zapnuté", Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                Toast.makeText(context, "Bez internetu", Toast.LENGTH_SHORT).show()
+            }
+        }
 
         val connectivityManager =
             requireContext().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
@@ -332,6 +348,13 @@ class HomeFragment : Fragment() {
                 wifi_off_vlhkost.visibility = View.VISIBLE
             }
         }
+    }
+
+    @Suppress("DEPRECATION")
+    private fun isConnectedToInternet(): Boolean {
+        val connectivityManager = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as? ConnectivityManager
+        val activeNetwork = connectivityManager?.activeNetworkInfo
+        return activeNetwork != null && activeNetwork.isConnectedOrConnecting
     }
 
 }
