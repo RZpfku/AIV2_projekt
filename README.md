@@ -27,6 +27,6 @@ Vytvoriť teplomer, ktorý bude merať teplotu, kvalitu vzduchu a vlhkosť. Tepl
  # Hotové úlohy:
 
  **Marek**
- >Android aplikácia - 90% hotové\
- >Kód pre ESP32 - 99% hotové\
+ >Android aplikácia - 100% hotové\
+ >Kód pre ESP32 - 100% hotové\
  >Firebase databáza - 100% hotové
