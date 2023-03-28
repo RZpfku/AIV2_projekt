@@ -2,8 +2,8 @@
 
 | Na projekte pracovali:              | Úlohy:                        |
 | -----------------| -------------------------------------|
-| [Radovan Žiak](https://github.com/RZpfku) | Vedúci projektu, kód pre ESP32 |
-| [Marek Guráň](https://github.com/marek-guran) | Android aplikácia s Firebase databázou + firebase kód pre ESP32 |
+| [Radovan Žiak](https://github.com/RZpfku) | Vedúci projektu, dokumentácia, obhajoba projektu a tester aplikácie |
+| [Marek Guráň](https://github.com/marek-guran) | Android aplikácia s Firebase databázou + kód pre ESP32 |
 | [Peter Spišiak](https://github.com/PeterSpisiak) | Krabička a tester aplikácie |
 
 # Plán projektu
@@ -13,16 +13,20 @@ Vytvoriť teplomer, ktorý bude merať teplotu, kvalitu vzduchu a vlhkosť. Tepl
 
 ###### Rozpracovať do 26.3.2023
 
- **Obal, na teplomer - LilyGO TTGO T-Display 1.14″ ESP32 (treba počítať aj s baterkou).**\
+ **Obal, na teplomer - Vývojová doska ESP32 + 0.96″ OLED display.**\
+ Treba počítať s tým, že bude trebať dieru pre napájací kábel.\
+ Rozmery: 29.22 mm x 98.58 mm x 17.22 mm (treba počítať s rezervou, sú to rozmery od predajcu)\
  Pre: Peter
 
- **Software na teplomer.**\
+ **Dokumentácia.**\
  Pre: Rado
 
- **Android aplikácia.**\
+ **Android aplikácia, Firebase databáza, software pre teplomer.**\
  Pre: Marek
  
  # Hotové úlohy:
 
- **Android aplikácia, firebase databáza, firebase kód pre ESP32.**
- >Marek (100% hotové)
+ **Marek**
+ >Android aplikácia - 90% hotové\
+ >Kód pre ESP32 - 99% hotové\
+ >Firebase databáza - 100% hotové
