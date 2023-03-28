@@ -6,11 +6,11 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 
-#define WIFI_SSID ""
-#define WIFI_PASSWORD ""
-#define FIREBASE_HOST ""
-#define FIREBASE_AUTH ""
-#define OPENWEATHER_API_KEY ""
+#define WIFI_SSID "Desktop-MK"
+#define WIFI_PASSWORD "Loltrolllol"
+#define FIREBASE_HOST "teplomer-esp32-default-rtdb.europe-west1.firebasedatabase.app"
+#define FIREBASE_AUTH "1HCE4eC2ZAfJD8vsrAy99LRPc3e9BFBo5VKwy0xD"
+#define OPENWEATHER_API_KEY "c3238a87b39de7273824b1adcfa6d7f2"
 
 #define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 64
@@ -58,13 +58,15 @@ void loop() {
     int humidity = jsonBuffer["main"]["humidity"];
     float wind = jsonBuffer["wind"]["speed"];
     int pressure = jsonBuffer["main"]["pressure"];
+    String city = jsonBuffer["name"];
 
     display.begin(SSD1306_SWITCHCAPVCC, 0x3C); // Addresa 0x3D pre 128x64
     delay(200);
     display.clearDisplay();
     display.setCursor(0, 0);            //Začne vypisovať vľavo hore
     display.setTextColor(SSD1306_BLACK, SSD1306_WHITE);
-    display.print(" Mesto: Ruzomberok   ");
+    display.print(" Mesto: ");
+    display.print(city);
   
     display.println();
     display.setTextColor(SSD1306_WHITE, SSD1306_BLACK);
@@ -90,7 +92,7 @@ void loop() {
     display.display();
     
     // Prepare JSON data to upload to Firebase
-    String json = "{ \"data\": { \"teplota\": \"" + String(temperature) + "℃\", \"vlhkost\": \"" + String(humidity) + "%\", \"vietor\": \"" + String(wind) + " m/s\", \"tlak\": \"" + String(pressure) + " hpa\" } }";
+    String json = "{ \"data\": { \"teplota\": \"" + String(temperature) + "℃\", \"vlhkost\": \"" + String(humidity) + "%\", \"vietor\": \"" + String(wind) + " m/s\", \"tlak\": \"" + String(pressure) + " hpa\", \"mesto\": \"" + String(city) + "\" } }";
     Serial.println(json);
     
     // Upload data to Firebase
@@ -106,5 +108,5 @@ void loop() {
     Serial.println("Failed to connect to OpenWeatherMap API.");
   }
   
-  delay(300000); // Upload data every 10 seconds
+  delay(300000); // Upload data every 5 mins
 }
