@@ -14,8 +14,8 @@ Cieľom tohto projektu je vytvoriť zariadenie, ktoré bude schopné čítať d�
 2. Pripojenie ESP32 na internet a nastavenie pripojenia k OpenWeather API.
 3. Nastavenie spojenia s Firebase a úprava zabezpečenia prístupu.
 3. Vytvorenie kódu pre čítanie dát z OpenWeather API a nahrávanie ich do Firebase databázy.
-4. Naprogramovanie funkcionality pre čítanie dát z Firebase a riadenie zapnutia/zapnutia displeja.
-5. Programovanie Android aplikácie, ktorá bude zobrazovať aktualizované informácie z Firebase a umožní užívateľovi ovládať jednotku.
+4. Naprogramovanie funkcionality pre čítanie dát z Firebase a riadenie zapnutia/vypnutia displeja.
+5. Programovanie Android aplikácie, ktorá bude zobrazovať aktualizované informácie z Firebase a umožní užívateľovi ovládať obrazovku zariadenia.
 6. Testovanie celého systému pre overenie funkčnosti a odstránenie chýb.
 7. Vytvorenie krabičky pre ESP32.
 8. Vytvorenie dokumentácie projektu.
