@@ -15,39 +15,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"
-            android:layout_marginBottom="15dp"
-            android:elevation="20dp"
-            app:cardCornerRadius="20dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/mesto"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="Bez internetu"
-                    android:textAlignment="center"
-                    android:textSize="28sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            style="@style/Widget.Material3.CardView.Filled"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
             android:elevation="20dp"
             app:cardCornerRadius="20dp">
 
@@ -199,22 +168,13 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/vietor"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="20dp"
-                    android:text="Vietor: bez internetu"
-                    android:textSize="20sp" />
-
-                <TextView
                     android:id="@+id/tlak"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
                     android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
                     android:text="Tlak: bez internetu"
                     android:textSize="20sp" />
 

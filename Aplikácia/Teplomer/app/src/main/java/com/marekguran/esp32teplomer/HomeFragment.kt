@@ -32,7 +32,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var teplotaValue: TextView
     private lateinit var vlhkostValue: TextView
-    private lateinit var zap_vyp: TextView
+    private lateinit var zap_vyp: Button
     private lateinit var wifi_off_teplota: ImageView
     private lateinit var wifi_off_vlhkost: ImageView
 
@@ -271,33 +271,6 @@ class HomeFragment : Fragment() {
                                         )
                                     )
                                 }
-                            }
-
-                            override fun onCancelled(error: DatabaseError) {
-                                // Handle any errors that may occur while retrieving the data
-                                // For example, you could log the error message using Log.e()
-                            }
-                        })
-
-
-                        val mestoRef = database!!.getReference("data").child("mesto")
-                        mestoRef.addValueEventListener(object : ValueEventListener {
-                            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                                val mesto = dataSnapshot.value as? String ?: ""
-                                binding?.mesto?.text = mesto
-                            }
-
-                            override fun onCancelled(error: DatabaseError) {
-                                // Handle any errors that may occur while retrieving the data
-                                // For example, you could log the error message using Log.e()
-                            }
-                        })
-
-                        val vietorRef = database!!.getReference("data").child("vietor")
-                        vietorRef.addValueEventListener(object : ValueEventListener {
-                            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                                val vietor = dataSnapshot.value as? String ?: ""
-                                binding?.vietor?.text = "Vietor: " + vietor
                             }
 
                             override fun onCancelled(error: DatabaseError) {
