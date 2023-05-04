@@ -25,14 +25,14 @@ HTTPClient httpClient;
 
 float temperature = 0;
 float humidity = 0;
+float pressure = 0;
 
 DHT dht(DHTPIN, DHTTYPE); 
 
 void setup() {
   Serial.begin(9600);
   dht.begin();
-  }
-
+  
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
   while (WiFi.status() != WL_CONNECTED) {
     delay(1000);
@@ -45,7 +45,7 @@ void setup() {
 }
 
 void loop() {
-  delay(1000);   //každú sekundu meria
+  
   float h = getHumidity();
   float t = getTemperature();
   
@@ -78,6 +78,7 @@ void loop() {
     Serial.println("Failed to upload data to Firebase.");
     Serial.println(firebaseData.errorReason());
   }
+  delay(10000);   //každých 10 sekúnd
 }
 
 //funkcie
