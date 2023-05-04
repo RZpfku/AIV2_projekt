@@ -1,7 +1,7 @@
 //Knižnice
 #include <Wire.h>
 #include <Adafruit_Sensor.h>
-#include "Adafruit_BME680.h"
+#include "DHT.h"
 #include <ArduinoJson.h>
 #include <WiFi.h>
 #include <HTTPClient.h>
@@ -13,37 +13,25 @@
 #define WIFI_PASSWORD ""
 #define FIREBASE_HOST ""
 #define FIREBASE_AUTH ""
+#define DHTPIN 15
+#define DHTTYPE DHT11
 
 FirebaseData firebaseData;
 WiFiClient wifiClient;
 HTTPClient httpClient;
 
 //Premenné, konštanty
+
+
 float temperature = 0;
 float humidity = 0;
-float pressure = 0;
 
-Adafruit_BME680 bme;  // I2C komunikácia
+DHT dht(DHTPIN, DHTTYPE); 
 
 void setup() {
-  Serial.begin(115200);
-
-  //kontrola ci je senzor pripojeny
-  while (!Serial)
-    ;
-  Serial.println(F("BME680 async test"));
-
-  if (!bme.begin()) {
-    Serial.println(F("Could not find a valid BME680 sensor, check wiring!"));
-    while (1)
-      ;
+  Serial.begin(9600);
+  dht.begin();
   }
-
-  //Nadstavenie bme oversamplingu a inicializacia filtra
-  bme.setTemperatureOversampling(BME680_OS_8X);
-  bme.setHumidityOversampling(BME680_OS_2X);
-  bme.setPressureOversampling(BME680_OS_4X);
-  bme.setIIRFilterSize(BME680_FILTER_SIZE_3);
 
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
   while (WiFi.status() != WL_CONNECTED) {
@@ -57,51 +45,25 @@ void setup() {
 }
 
 void loop() {
-  // BME - začni merať.
-  unsigned long endTime = bme.beginReading();
-  if (endTime == 0) {
-    Serial.println(F("Failed to begin reading :("));
-    return;
-  }
-  Serial.print(F("Reading started at "));
-  Serial.print(millis());
-  Serial.print(F(" and will finish at "));
-  Serial.println(endTime);
-
-  Serial.println(F("You can do other work during BME680 measurement."));
-  delay(50);
-
-  if (!bme.endReading()) {
-    Serial.println(F("Failed to complete reading :("));
-    return;
-  }
-  //Vypis hodnôt
-  Serial.print(F("Reading completed at "));
-  Serial.println(millis());
-
-  Serial.print(F("Temperature = "));
-  Serial.print(bme.readTemperature());
-  Serial.println(F(" *C"));
-
-  Serial.print(F("Pressure = "));
-  Serial.print(bme.readPressure() / 100.0);
-  Serial.println(F(" hPa"));
-
-  Serial.print(F("Humidity = "));
-  Serial.print(bme.readHumidity());
-  Serial.println(F(" %"));
-
-  Serial.println();
-  delay(2000);
-
+  delay(1000);   //každú sekundu meria
+  float h = getHumidity();
+  float t = getTemperature();
+  
   getTemperature();
   sendTemperatureToNextion();
-
   getHumidity();
   sendHumidityToNextion();
 
-  getPressure();
-  sendPressureToNextion();
+  if (isnan(h) || isnan(t)) {
+    Serial.println("Failed reception");
+    return;
+  }
+
+  Serial.print("Vlhkost: ");
+  Serial.print(h);
+  Serial.print("%  Teplota: ");
+  Serial.print(t);
+  Serial.print("°C, ");
 
   // Prepare JSON data to upload to Firebase
   String json = "{ \"data\": { \"teplota\": \"" + String(temperature) + "℃\", \"vlhkost\": \"" + String(humidity) + "%\", \"tlak\": \"" + String(pressure) + " hPa\" } }";
@@ -119,38 +81,29 @@ void loop() {
 }
 
 //funkcie
-float getTemperature() {
-  temperature = bme.readTemperature();
+float getTemperature()
+{
+  temperature = dht.readTemperature();
 }
 
-float getHumidity() {
-  humidity = bme.readHumidity();
+float getHumidity()
+{
+  humidity = dht.readHumidity();
 }
 
-float getPressure() {
-  pressure = bme.readPressure();
-  pressure = pressure / 100.0F;
-}
-
-void sendHumidityToNextion() {
-  String command = "humidity.txt=\"" + String(humidity, 1) + "\"";
+void sendHumidityToNextion()
+{
+  String command = "humidity.txt=\""+String(humidity,1)+"\"";
   Serial.print(command);
-  endNextionCommand();
+  Serial.write(0xff);
+  Serial.write(0xff);
+  Serial.write(0xff);
 }
 
-void sendTemperatureToNextion() {
-  String command = "temperature.txt=\"" + String(temperature, 1) + "\"";
+void sendTemperatureToNextion()
+{
+  String command = "temperature.txt=\""+String(temperature,1)+"\"";
   Serial.print(command);
-  endNextionCommand();
-}
-
-void sendPressureToNextion() {
-  String command = "pressure.txt=\"" + String(pressure, 1) + "\"";
-  Serial.print(command);
-  endNextionCommand();
-}
-
-void endNextionCommand() {
   Serial.write(0xff);
   Serial.write(0xff);
   Serial.write(0xff);
