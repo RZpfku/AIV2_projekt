@@ -1,5 +1,6 @@
 package com.marekguran.esp32teplomer
 
+import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.net.ConnectivityManager
@@ -48,6 +49,7 @@ class HomeFragment : Fragment() {
         isAttached = false
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -279,19 +281,6 @@ class HomeFragment : Fragment() {
                             }
                         })
 
-                        val tlakRef = database!!.getReference("data").child("tlak")
-                        tlakRef.addValueEventListener(object : ValueEventListener {
-                            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                                val tlak = dataSnapshot.value as? String ?: ""
-                                binding?.tlak?.text = "Tlak: " + tlak
-                            }
-
-                            override fun onCancelled(error: DatabaseError) {
-                                // Handle any errors that may occur while retrieving the data
-                                // For example, you could log the error message using Log.e()
-                            }
-                        })
-
                         val buttonRef = database!!.getReference("data").child("displej")
                         buttonRef.addValueEventListener(object : ValueEventListener {
                             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -338,6 +327,7 @@ class HomeFragment : Fragment() {
         binding = null // ak bude zase crashovat aplikácia, tak odstrániť tento riadok, povodne má prečistiť pamäť keď sa prepne fragment alebo prejde do inej aplikácie
     }
 
+    @SuppressLint("SetTextI18n")
     @Suppress("DEPRECATION")
     private fun checkInternetConnection() {
         val connectivityManager =

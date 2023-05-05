@@ -2,7 +2,6 @@ package com.marekguran.esp32teplomer
 
 import android.content.res.Configuration
 import android.os.Bundle
-import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -30,7 +29,7 @@ class MainActivity : AppCompatActivity() {
             val navView: NavigationRailView = binding.navView as NavigationRailView
 
             val navController = findNavController(R.id.nav_host_fragment_activity_main)
-            val appBarConfiguration = AppBarConfiguration(setOf(
+            AppBarConfiguration(setOf(
                 R.id.navigation_home, R.id.navigation_about))
 
             navView.setupWithNavController(navController)
@@ -39,7 +38,7 @@ class MainActivity : AppCompatActivity() {
             val navView: BottomNavigationView = binding.navView as BottomNavigationView
 
             val navController = findNavController(R.id.nav_host_fragment_activity_main)
-            val appBarConfiguration = AppBarConfiguration(setOf(
+            AppBarConfiguration(setOf(
                 R.id.navigation_home, R.id.navigation_about))
 
             navView.setupWithNavController(navController)
