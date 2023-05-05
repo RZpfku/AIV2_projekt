@@ -46,19 +46,19 @@ void setup() {
 }
 
 void loop() {
-    Firebase.getString(firebaseData, "/data/displej");
-    String displayValue = firebaseData.stringData();
-    Serial.println("firebase displej value: ");
-    Serial.println(displayValue);
+  Firebase.getString(firebaseData, "/data/displej");
+  String displayValue = firebaseData.stringData();
+  Serial.println("firebase displej value: ");
+  Serial.println(displayValue);
 
-    if (displayValue != prevDisplej) {
-      if (displayValue == "1") {
-        zapDisplej()
-      } else {
-        vypDisplej()
-      }
-      prevDisplej = displayValue;
+  if (displayValue != prevDisplej) {
+    if (displayValue == "1") {
+      zapDisplej()
+    } else {
+      vypDisplej()
     }
+    prevDisplej = displayValue;
+  }
   
   float h = getHumidity();
   float t = getTemperature();
