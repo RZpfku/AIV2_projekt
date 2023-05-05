@@ -53,9 +53,9 @@ void loop() {
 
   if (displayValue != prevDisplej) {
     if (displayValue == "1") {
-      zapDisplej()
+      zapDisplej();
     } else {
-      vypDisplej()
+      vypDisplej();
     }
     prevDisplej = displayValue;
   }
