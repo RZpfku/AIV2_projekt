@@ -26,6 +26,7 @@ HTTPClient httpClient;
 float temperature = 0;
 float humidity = 0;
 float pressure = 0;
+String prevDisplej = "";
 
 DHT dht(DHTPIN, DHTTYPE); 
 
@@ -45,6 +46,19 @@ void setup() {
 }
 
 void loop() {
+    Firebase.getString(firebaseData, "/data/displej");
+    String displayValue = firebaseData.stringData();
+    Serial.println("firebase displej value: ");
+    Serial.println(displayValue);
+
+    if (displayValue != prevDisplej) {
+      if (displayValue == "1") {
+        zapDisplej()
+      } else {
+        vypDisplej()
+      }
+      prevDisplej = displayValue;
+    }
   
   float h = getHumidity();
   float t = getTemperature();
@@ -66,7 +80,7 @@ void loop() {
   Serial.print("°C, ");
 
   // Prepare JSON data to upload to Firebase
-  String json = "{ \"data\": { \"teplota\": \"" + String(temperature) + "℃\", \"vlhkost\": \"" + String(humidity) + "%\", \"tlak\": \"" + String(pressure) + " hPa\" } }";
+  String json = "{ \"data\": { \"teplota\": \"" + String(temperature) + "℃\", \"vlhkost\": \"" + String(humidity) + "%\", \"displej\": " + String(displayValue) + " } }";
   Serial.println(json);
 
   // Upload data to Firebase
@@ -105,6 +119,22 @@ void sendTemperatureToNextion()
 {
   String command = "temperature.txt=\""+String(temperature,1)+"\"";
   Serial.print(command);
+  Serial.write(0xff);
+  Serial.write(0xff);
+  Serial.write(0xff);
+}
+
+void vypDisplej()
+{
+  Serial.print("sleep=1");
+  Serial.write(0xff);
+  Serial.write(0xff);
+  Serial.write(0xff);
+}
+
+void zapDisplej()
+{
+  Serial.print("sleep=0");
   Serial.write(0xff);
   Serial.write(0xff);
   Serial.write(0xff);
