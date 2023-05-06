@@ -47,10 +47,12 @@ void setup() {
 
 void loop() {
   delay(10000);   //každých 10 sekúnd  
-  getTemperature();
-  sendTemperatureToNextion();
+  
   getHumidity();
   sendHumidityToNextion();
+  
+  getTemperature();
+  sendTemperatureToNextion();
   
   // Prepare JSON data to upload to Firebase
   String json = "{ \"data\": { \"teplota\": \"" + String(temperature) + "℃\", \"vlhkost\": \"" + String(humidity) + "%\", \"tlak\": \"" + String(pressure) + " hPa\" } }";
