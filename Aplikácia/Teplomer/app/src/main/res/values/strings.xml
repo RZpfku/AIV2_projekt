@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Teplomer</string>
-    <string name="o_aplikacii">Aplikácia slúži na monitorovanie údajov z meracieho zariadenia pripojeného k platforme IoT (Internet vecí). Údaje zariadenia sú nahrávané do databázy Firebase a zobrazujú sa v tejto aplikácii. Táto aplikácia je vhodná na použitie, keď sa nenachádzate v blízkosti meracieho zariadenia alebo si chcete zapnúť jeho obrazovku.</string>
+    <string name="o_aplikacii">Aplikácia slúži na monitorovanie údajov z meracieho zariadenia pripojeného k platforme IoT (Internet vecí). Údaje zariadenia sú nahrávané do databázy Firebase a zobrazujú sa v tejto aplikácii. Táto aplikácia je vhodná na použitie, keď sa nenachádzate v blízkosti meracieho zariadenia.</string>
     <string name="o_projekte_ludia">Marek Guráň\nAndroid aplikácia s Firebase databázou + kód pre ESP32 na Firebase\n\nRadovan Žiak\nVedúci projektu, dokumentácia, obhajoba projektu, kód pre ESP32 a tester aplikácie\n\nPeter Spišiak\nKrabička, spájkovanie a tester aplikácie</string>
     <string name="o_projekte">Cieľom tohto projektu je vytvoriť zariadenie, ktoré bude čítať dáta zo senzoru DHT11 a posielať ich na Firebase databázu a zobrazovvať na Nextion obrazovke. Android aplikácia bude taktiež komunikovať s Firebase databázou, stiahne z nej dáta a v reálnom čase ich bude zobrazovať.</string>
 </resources>
