@@ -33,7 +33,6 @@ class HomeFragment : Fragment() {
 
     private lateinit var teplotaValue: TextView
     private lateinit var vlhkostValue: TextView
-    private lateinit var zap_vyp: Button
     private lateinit var wifi_off_teplota: ImageView
     private lateinit var wifi_off_vlhkost: ImageView
 
@@ -64,7 +63,6 @@ class HomeFragment : Fragment() {
             vlhkostValue = it.vlhkostValue
             wifi_off_teplota = it.wifiOffTeplota
             wifi_off_vlhkost = it.wifiOffVlhkost
-            zap_vyp = it.zapVyp
         }
 
         // Vyvolané lebo sú to lateint, ktoré sa nevytvoria kým nebudú zavolané a ak by to nebolo, tak by checkInternetConnection() crashovalo aplikáciu
@@ -86,38 +84,6 @@ class HomeFragment : Fragment() {
             }
         }
         handler.post(runnable)
-
-        val vypZapButton = binding?.zapVyp
-        vypZapButton?.setOnClickListener {
-            if (isConnectedToInternet()) {
-                val dataRef = database!!.getReference("data/displej")
-                val value = if (it.isSelected) "0" else "1"
-                it.isSelected = !it.isSelected
-                dataRef.setValue(value)
-                if (value == "0") {
-                    Toast.makeText(context, "Obrazovka bola vypnutá", Toast.LENGTH_SHORT).show()
-                    binding?.zapVyp?.text = "Vypnutá"
-                } else {
-                    Toast.makeText(context, "Obrazovka bola zapnutá", Toast.LENGTH_SHORT).show()
-                    binding?.zapVyp?.text = "Zapnutá"
-                }
-            } else {
-                Toast.makeText(context, "Bez pripojenia na internet", Toast.LENGTH_SHORT).show()
-                binding?.zapVyp?.text = "Bez internetu"
-            }
-        }
-
-        val dataRef = database!!.getReference("data/displej")
-        dataRef.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val value = dataSnapshot.getValue(String::class.java)
-                vypZapButton?.isSelected = value == "1"
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                // Handle error
-            }
-        })
 
         val connectivityManager =
             requireContext().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
@@ -281,25 +247,6 @@ class HomeFragment : Fragment() {
                             }
                         })
 
-                        val buttonRef = database!!.getReference("data").child("displej")
-                        buttonRef.addValueEventListener(object : ValueEventListener {
-                            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                                val displej = dataSnapshot.value as? String ?: ""
-
-                                if (displej == "1") {
-                                    binding?.zapVyp?.text = "Zapnutá"
-                                }
-                                if (displej == "0") {
-                                    binding?.zapVyp?.text = "Vypnutá"
-                                }
-                            }
-
-                            override fun onCancelled(error: DatabaseError) {
-                                // Handle any errors that may occur while retrieving the data
-                                // For example, you could log the error message using Log.e()
-                            }
-                        })
-
                     }
                 } catch (e: Exception) {
                     Log.e(TAG, "Error occurred while retrieving data from Firebase: ${e.message}")
@@ -346,7 +293,6 @@ class HomeFragment : Fragment() {
                 vlhkostValue.visibility = View.GONE
                 wifi_off_teplota.visibility = View.VISIBLE
                 wifi_off_vlhkost.visibility = View.VISIBLE
-                binding?.zapVyp?.text = "Bez internetu"
             }
         }
     }
